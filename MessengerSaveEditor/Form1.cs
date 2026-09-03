@@ -52,6 +52,11 @@ namespace MessengerSaveEditor
         void Form1_DragDrop(object sender, DragEventArgs e)
         {
             string[] saveFile = (string[])e.Data.GetData(DataFormats.FileDrop);
+            if (saveFile.Length > 1)
+            {
+                ShowError($"Expected only one file, instead received {saveFile.Length} files");
+                return;
+            }
             HandleSaveFile(saveFile);
         }
 
@@ -112,11 +117,9 @@ namespace MessengerSaveEditor
                 case "Slot 2": activeSlot = 1; break;
                 case "Slot 3": activeSlot = 2; break;
             }
-
         }
 
         System.Windows.Forms.Timer errorLabelTimer = new();
-
         private void ShowError(string errorMessage)
         {
             errorMessage = "Error: " + errorMessage;
