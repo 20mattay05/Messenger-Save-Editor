@@ -16,6 +16,11 @@ namespace MessengerSaveEditor
             return sv;
         }
 
+        public string[] MakeSaveFile(SaveFile saveFile)
+        {
+            throw new NotImplementedException();
+        }
+
         private string[] DecryptSaveFile(string[] saveFile)
         {
             List<string> newLines = new(saveFile.Length);
