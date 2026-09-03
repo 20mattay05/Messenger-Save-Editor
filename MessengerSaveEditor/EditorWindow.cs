@@ -26,14 +26,14 @@ namespace MessengerSaveEditor
         public List<int> Values { get; set; }
     }
 
-    public partial class Form1 : Form
+    public partial class EditorWindow : Form
     {
         SaveFileHandler saveFileHandler = new();
 
         SaveFile? viewedSaveFile = null;
         int activeSlot = 0;
         
-        public Form1()
+        public EditorWindow()
         {
             InitializeComponent();
             DragEnter += new DragEventHandler(Form1_DragEnter);
@@ -57,7 +57,7 @@ namespace MessengerSaveEditor
                 ShowError($"Expected only one file, instead received {saveFile.Length} files");
                 return;
             }
-            HandleSaveFile(saveFile);
+            HandleSaveFile(saveFile[0]);
         }
 
         private void CopyPath_Click(object sender, EventArgs e)
