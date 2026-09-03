@@ -8,24 +8,6 @@ using System.Text.Json.Serialization;
 
 namespace MessengerSaveEditor
 {
-    public struct SaveFile
-    {
-        public SaveSlot[] SaveSlots { get; set; }
-    }
-    public struct SaveSlot
-    {
-        public List<int> ShopUpgradesUnlocked { get; set; }
-        public Items Items { get; set; }
-
-        [JsonIgnore]
-        public Dictionary<int, int> itemsDict;
-    }
-    public struct Items
-    {
-        public List<int> Keys { get; set; }
-        public List<int> Values { get; set; }
-    }
-
     public partial class EditorWindow : Form
     {
         SaveFileHandler saveFileHandler = new();

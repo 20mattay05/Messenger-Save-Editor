@@ -44,7 +44,7 @@
             ErrorLabel = new Label();
             NoSavePanel = new Panel();
             SavePanel = new Panel();
-            panel1 = new Panel();
+            TreePanel = new Panel();
             toolStrip1.SuspendLayout();
             NoSavePanel.SuspendLayout();
             SavePanel.SuspendLayout();
@@ -187,7 +187,7 @@
             // SavePanel
             // 
             SavePanel.BackColor = Color.Transparent;
-            SavePanel.Controls.Add(panel1);
+            SavePanel.Controls.Add(TreePanel);
             SavePanel.Location = new Point(19, 37);
             SavePanel.Margin = new Padding(10);
             SavePanel.Name = "SavePanel";
@@ -195,14 +195,14 @@
             SavePanel.TabIndex = 5;
             SavePanel.Visible = false;
             // 
-            // panel1
+            // TreePanel
             // 
-            panel1.Location = new Point(829, 156);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(295, 274);
-            panel1.TabIndex = 0;
+            TreePanel.Location = new Point(743, 102);
+            TreePanel.Name = "TreePanel";
+            TreePanel.Size = new Size(445, 400);
+            TreePanel.TabIndex = 0;
             // 
-            // Form1
+            // EditorWindow
             // 
             AllowDrop = true;
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -215,7 +215,7 @@
             Controls.Add(NoSavePanel);
             Controls.Add(toolStrip1);
             FormBorderStyle = FormBorderStyle.FixedSingle;
-            Name = "Form1";
+            Name = "EditorWindow";
             Text = "Messenger Save Editor";
             toolStrip1.ResumeLayout(false);
             toolStrip1.PerformLayout();
@@ -241,6 +241,6 @@
         private ToolStripMenuItem slot3ToolStripMenuItem;
         private Panel NoSavePanel;
         private Panel SavePanel;
-        private Panel panel1;
+        private Panel TreePanel;
     }
 }
