@@ -126,7 +126,7 @@ namespace MessengerSaveEditor
             ErrorLabel.Text = errorMessage;
             ErrorLabel.Visible = true;
 
-            const int millisecondsVisible = 5000;
+            const int millisecondsVisible = 10 * 1000;
             errorLabelTimer.Interval = millisecondsVisible;
             errorLabelTimer.Start();
         }
