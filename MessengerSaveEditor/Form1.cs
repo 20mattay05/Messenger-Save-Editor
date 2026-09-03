@@ -92,8 +92,8 @@ namespace MessengerSaveEditor
         private void ViewSaveFile(SaveFile sv)
         {
             viewedSaveFile = sv;
-            PleaseOpenLabel.Visible = false;
-            CopyPath.Visible = false;
+            NoSavePanel.Visible = false;
+            SavePanel.Visible = true;
             saveToolStripMenuItem.Enabled = true;
             saveAsToolStripMenuItem.Enabled = true;
 

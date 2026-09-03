@@ -42,7 +42,12 @@
             PleaseOpenLabel = new Label();
             CopyPath = new Button();
             ErrorLabel = new Label();
+            NoSavePanel = new Panel();
+            SavePanel = new Panel();
+            panel1 = new Panel();
             toolStrip1.SuspendLayout();
+            NoSavePanel.SuspendLayout();
+            SavePanel.SuspendLayout();
             SuspendLayout();
             // 
             // openSaveFileDialog
@@ -76,7 +81,7 @@
             // openToolStripMenuItem
             // 
             openToolStripMenuItem.Name = "openToolStripMenuItem";
-            openToolStripMenuItem.Size = new Size(224, 26);
+            openToolStripMenuItem.Size = new Size(143, 26);
             openToolStripMenuItem.Text = "Open";
             openToolStripMenuItem.Click += openToolStripMenuItem_Click;
             // 
@@ -84,7 +89,7 @@
             // 
             saveToolStripMenuItem.Enabled = false;
             saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            saveToolStripMenuItem.Size = new Size(224, 26);
+            saveToolStripMenuItem.Size = new Size(143, 26);
             saveToolStripMenuItem.Text = "Save";
             saveToolStripMenuItem.Click += saveToolStripMenuItem_Click;
             // 
@@ -92,7 +97,7 @@
             // 
             saveAsToolStripMenuItem.Enabled = false;
             saveAsToolStripMenuItem.Name = "saveAsToolStripMenuItem";
-            saveAsToolStripMenuItem.Size = new Size(224, 26);
+            saveAsToolStripMenuItem.Size = new Size(143, 26);
             saveAsToolStripMenuItem.Text = "Save As";
             // 
             // toolStripDropDownButton2
@@ -132,9 +137,10 @@
             PleaseOpenLabel.Dock = DockStyle.Fill;
             PleaseOpenLabel.Font = new Font("Segoe UI", 16F);
             PleaseOpenLabel.ForeColor = SystemColors.ControlLightLight;
-            PleaseOpenLabel.Location = new Point(0, 27);
+            PleaseOpenLabel.Location = new Point(0, 0);
+            PleaseOpenLabel.Margin = new Padding(6, 0, 6, 0);
             PleaseOpenLabel.Name = "PleaseOpenLabel";
-            PleaseOpenLabel.Size = new Size(1262, 646);
+            PleaseOpenLabel.Size = new Size(1224, 617);
             PleaseOpenLabel.TabIndex = 2;
             PleaseOpenLabel.Text = "Please open your save file in the File menu at the top left, usually found in: \r\n\"%userprofile%\\AppData\\LocalLow\\Sabotage Studio\\The Messenger\"\r\nOr drag your save file into the window\r\n";
             PleaseOpenLabel.TextAlign = ContentAlignment.MiddleCenter;
@@ -144,7 +150,7 @@
             // 
             CopyPath.BackgroundImage = (Image)resources.GetObject("CopyPath.BackgroundImage");
             CopyPath.BackgroundImageLayout = ImageLayout.Stretch;
-            CopyPath.Location = new Point(1050, 318);
+            CopyPath.Location = new Point(1029, 276);
             CopyPath.Name = "CopyPath";
             CopyPath.Size = new Size(37, 37);
             CopyPath.TabIndex = 3;
@@ -166,6 +172,36 @@
             ErrorLabel.Visible = false;
             ErrorLabel.Click += ErrorLabel_Click;
             // 
+            // NoSavePanel
+            // 
+            NoSavePanel.BackColor = Color.Transparent;
+            NoSavePanel.Controls.Add(CopyPath);
+            NoSavePanel.Controls.Add(ErrorLabel);
+            NoSavePanel.Controls.Add(PleaseOpenLabel);
+            NoSavePanel.Location = new Point(19, 37);
+            NoSavePanel.Margin = new Padding(10);
+            NoSavePanel.Name = "NoSavePanel";
+            NoSavePanel.Size = new Size(1224, 617);
+            NoSavePanel.TabIndex = 3;
+            // 
+            // SavePanel
+            // 
+            SavePanel.BackColor = Color.Transparent;
+            SavePanel.Controls.Add(panel1);
+            SavePanel.Location = new Point(19, 37);
+            SavePanel.Margin = new Padding(10);
+            SavePanel.Name = "SavePanel";
+            SavePanel.Size = new Size(1224, 617);
+            SavePanel.TabIndex = 5;
+            SavePanel.Visible = false;
+            // 
+            // panel1
+            // 
+            panel1.Location = new Point(829, 156);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(295, 274);
+            panel1.TabIndex = 0;
+            // 
             // Form1
             // 
             AllowDrop = true;
@@ -175,15 +211,16 @@
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(1262, 673);
-            Controls.Add(ErrorLabel);
-            Controls.Add(CopyPath);
-            Controls.Add(PleaseOpenLabel);
+            Controls.Add(SavePanel);
+            Controls.Add(NoSavePanel);
             Controls.Add(toolStrip1);
             FormBorderStyle = FormBorderStyle.FixedSingle;
             Name = "Form1";
             Text = "Messenger Save Editor";
             toolStrip1.ResumeLayout(false);
             toolStrip1.PerformLayout();
+            NoSavePanel.ResumeLayout(false);
+            SavePanel.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
         }
@@ -202,5 +239,8 @@
         private ToolStripMenuItem slot1ToolStripMenuItem;
         private ToolStripMenuItem slot2ToolStripMenuItem;
         private ToolStripMenuItem slot3ToolStripMenuItem;
+        private Panel NoSavePanel;
+        private Panel SavePanel;
+        private Panel panel1;
     }
 }
