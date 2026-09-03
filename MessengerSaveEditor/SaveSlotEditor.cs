@@ -7,7 +7,36 @@ using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace MessengerSaveEditor
-{
+{    
+    // TODO: Sort this
+    public enum TreeComponentName // Specifically sorted so that (int)name is the same number as in the games code
+    {
+        KarutaPlates,
+        SerendipitousBodies,
+        PathOfResilience,
+        KusariJacket,
+        EnergyShuriken,
+        SerendipitousMinds,
+        PreparedMind,
+        StrikeOfTheNinja,
+        SecondWind,
+        CurrentsMaster,
+        Meditation,
+        RejuvenativeSpirit,
+        CenteredMind,
+        AerobaticsWarrior,
+        DemonsBane,
+        DevilsDue,
+        TimeSense,
+        PowerSense,
+        FocusedPowerSense
+    }
+
+    public enum ItemComponentName
+    {
+
+    }
+
     public class SaveFile
     {
         public SaveSlot[] SaveSlots { get; set; } = [];
@@ -71,32 +100,5 @@ namespace MessengerSaveEditor
 
     }
 
-    // TODO: Sort this
-    public enum TreeComponentName // Specifically sorted so that (int)name is the same number as in the games code
-    {
-        KarutaPlates,
-        SerendipitousBodies,
-        PathOfResilience,
-        KusariJacket,
-        EnergyShuriken,
-        SerendipitousMinds,
-        PreparedMind,
-        StrikeOfTheNinja,
-        SecondWind,
-        CurrentsMaster,
-        Meditation,
-        RejuvenativeSpirit,
-        CenteredMind,
-        AerobaticsWarrior,
-        DemonsBane,
-        DevilsDue,
-        TimeSense,
-        PowerSense,
-        FocusedPowerSense
-    }
 
-    public enum ItemComponentName
-    {
-
-    }
 }
