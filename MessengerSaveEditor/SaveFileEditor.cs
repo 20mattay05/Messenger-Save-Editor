@@ -40,11 +40,27 @@ namespace MessengerSaveEditor
     public class SaveFile
     {
         public SaveSlot[] SaveSlots { get; set; } = [];
+
+        public void UpdateItemsFormat()
+        {
+            foreach (SaveSlot s in SaveSlots)
+            {
+                List<KeyValuePair<int,int>> l = s.itemsDict.ToList();
+                Items newItems = new Items 
+                { 
+                    Keys = l.Select(kvp => kvp.Key).ToList(), 
+                    Values = l.Select(kvp => kvp.Value).ToList() 
+                };
+                s.Items = newItems;
+            }
+        }
     }
     public class SaveSlot
     {
         public List<int> ShopUpgradesUnlocked { get; set; } = new();
-        public Items Items { get; set; }
+
+        // Only used during json conversion. Instantly converted to the internal itemsDict dictionary for easier use
+        public Items Items { get; set; } 
 
         [JsonIgnore]
         public Dictionary<int, int> itemsDict = new();

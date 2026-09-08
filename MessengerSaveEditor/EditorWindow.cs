@@ -14,6 +14,8 @@ namespace MessengerSaveEditor
 
         SaveFile viewedSaveFile;
         int activeSlot = 0;
+        SaveSlot curSlot => viewedSaveFile.SaveSlots[activeSlot];
+
 
         SaveFileEditor slotEditor;
 
@@ -46,7 +48,7 @@ namespace MessengerSaveEditor
 
         private void CopyPath_Click(object sender, EventArgs e)
         {
-            string path = @"%userprofile%\AppData\LocalLow\Sabotage Studio\The Messenger";
+            const string path = @"%userprofile%\AppData\LocalLow\Sabotage Studio\The Messenger";
             Clipboard.SetText(path);
         }
 
@@ -88,6 +90,12 @@ namespace MessengerSaveEditor
             slot3ToolStripMenuItem.Enabled = true;
 
             slotEditor = new SaveFileEditor(sv);
+            UpdateVals();
+        }
+
+        private void UpdateVals()
+        {
+            moneyTextBox.Text = slotEditor.SlotBalance.ToString();
         }
 
         private void CheckSlot(object sender, EventArgs e)
@@ -103,7 +111,10 @@ namespace MessengerSaveEditor
                 case "Slot 2": activeSlot = 1; break;
                 case "Slot 3": activeSlot = 2; break;
             }
+            slotEditor.ChangeSlot(activeSlot);
+            UpdateVals();
         }
+
 
         System.Windows.Forms.Timer errorLabelTimer = new();
         private void ShowError(string errorMessage)
