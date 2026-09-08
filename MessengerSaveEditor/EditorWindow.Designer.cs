@@ -45,9 +45,14 @@
             NoSavePanel = new Panel();
             SavePanel = new Panel();
             TreePanel = new Panel();
+            moneyTextBox = new TextBox();
+            moneyPanel = new Panel();
+            timeshardPicture = new PictureBox();
             toolStrip1.SuspendLayout();
             NoSavePanel.SuspendLayout();
             SavePanel.SuspendLayout();
+            moneyPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)timeshardPicture).BeginInit();
             SuspendLayout();
             // 
             // openSaveFileDialog
@@ -187,6 +192,7 @@
             // SavePanel
             // 
             SavePanel.BackColor = Color.Transparent;
+            SavePanel.Controls.Add(moneyPanel);
             SavePanel.Controls.Add(TreePanel);
             SavePanel.Location = new Point(19, 37);
             SavePanel.Margin = new Padding(10);
@@ -197,10 +203,47 @@
             // 
             // TreePanel
             // 
-            TreePanel.Location = new Point(743, 102);
+            TreePanel.Location = new Point(739, 43);
             TreePanel.Name = "TreePanel";
             TreePanel.Size = new Size(445, 400);
             TreePanel.TabIndex = 0;
+            // 
+            // moneyTextBox
+            // 
+            moneyTextBox.BackColor = SystemColors.MenuText;
+            moneyTextBox.BorderStyle = BorderStyle.None;
+            moneyTextBox.Font = new Font("Courier New", 25.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            moneyTextBox.ForeColor = SystemColors.ControlLightLight;
+            moneyTextBox.Location = new Point(93, 19);
+            moneyTextBox.MaxLength = 6;
+            moneyTextBox.Name = "moneyTextBox";
+            moneyTextBox.Size = new Size(234, 48);
+            moneyTextBox.TabIndex = 1;
+            moneyTextBox.Text = "0";
+            moneyTextBox.WordWrap = false;
+            moneyTextBox.TextChanged += moneyTextBox_TextChanged;
+            // 
+            // moneyPanel
+            // 
+            moneyPanel.Controls.Add(timeshardPicture);
+            moneyPanel.Controls.Add(moneyTextBox);
+            moneyPanel.Location = new Point(840, 499);
+            moneyPanel.Name = "moneyPanel";
+            moneyPanel.Size = new Size(344, 79);
+            moneyPanel.TabIndex = 2;
+            // 
+            // timeshardPicture
+            // 
+            timeshardPicture.BackgroundImageLayout = ImageLayout.None;
+            timeshardPicture.Dock = DockStyle.Left;
+            timeshardPicture.Image = (Image)resources.GetObject("timeshardPicture.Image");
+            timeshardPicture.ImageLocation = "";
+            timeshardPicture.Location = new Point(0, 0);
+            timeshardPicture.Name = "timeshardPicture";
+            timeshardPicture.Size = new Size(87, 79);
+            timeshardPicture.SizeMode = PictureBoxSizeMode.Zoom;
+            timeshardPicture.TabIndex = 3;
+            timeshardPicture.TabStop = false;
             // 
             // EditorWindow
             // 
@@ -221,6 +264,9 @@
             toolStrip1.PerformLayout();
             NoSavePanel.ResumeLayout(false);
             SavePanel.ResumeLayout(false);
+            moneyPanel.ResumeLayout(false);
+            moneyPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)timeshardPicture).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -242,5 +288,8 @@
         private Panel NoSavePanel;
         private Panel SavePanel;
         private Panel TreePanel;
+        private Panel moneyPanel;
+        private PictureBox timeshardPicture;
+        private TextBox moneyTextBox;
     }
 }

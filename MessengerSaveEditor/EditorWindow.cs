@@ -12,9 +12,11 @@ namespace MessengerSaveEditor
     {
         SaveFileHandler saveFileHandler = new();
 
-        SaveFile? viewedSaveFile = null;
+        SaveFile viewedSaveFile;
         int activeSlot = 0;
-        
+
+        SaveFileEditor slotEditor;
+
         public EditorWindow()
         {
             InitializeComponent();
@@ -84,6 +86,8 @@ namespace MessengerSaveEditor
 
             slot2ToolStripMenuItem.Enabled = true;
             slot3ToolStripMenuItem.Enabled = true;
+
+            slotEditor = new SaveFileEditor(sv);
         }
 
         private void CheckSlot(object sender, EventArgs e)
@@ -93,7 +97,7 @@ namespace MessengerSaveEditor
             slot3ToolStripMenuItem.Checked = false;
             ToolStripMenuItem item = (ToolStripMenuItem)sender;
             item.Checked = true;
-            switch (item.Text) 
+            switch (item.Text)
             {
                 case "Slot 1": activeSlot = 0; break;
                 case "Slot 2": activeSlot = 1; break;
@@ -113,9 +117,17 @@ namespace MessengerSaveEditor
             errorLabelTimer.Start();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void moneyTextBox_TextChanged(object sender, EventArgs e)
         {
-
+            // Only numbers must be entered
+            if (System.Text.RegularExpressions.Regex.IsMatch(moneyTextBox.Text, "[^0-9]"))
+            {
+                moneyTextBox.Text = moneyTextBox.Text.Remove(moneyTextBox.Text.Length - 1);
+            }
+            
+            // If somehow a non-integer is entered, show an error
+            if (int.TryParse(moneyTextBox.Text, out int text)) slotEditor.SlotBalance = text;
+            else ShowError("Unexpected non-integer in timeshard textbox");
         }
 
         private void openSaveFileDialog_FileOk(object sender, System.ComponentModel.CancelEventArgs e)
@@ -152,6 +164,8 @@ namespace MessengerSaveEditor
         {
 
         }
+
+
     }
 
 }

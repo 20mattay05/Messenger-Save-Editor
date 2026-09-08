@@ -55,25 +55,29 @@ namespace MessengerSaveEditor
         public List<int> Values { get; set; }
     }
 
-    internal class SaveSlotEditor
+    internal class SaveFileEditor
     {
-        SaveSlot slot;
+        SaveFile sv;
+        int activeSlot;
 
-        private List<int> ShopTree => slot.ShopUpgradesUnlocked;
-        private int Balance 
+        SaveSlot Slot => sv.SaveSlots[activeSlot];
+
+        private List<int> ShopTree => Slot.ShopUpgradesUnlocked;
+        public int SlotBalance 
         {
-            get => slot.itemsDict[0];
-            set => slot.itemsDict[0] = value;
+            get => Slot.itemsDict[0];
+            set => Slot.itemsDict[0] = value;
         }
 
-        public SaveSlotEditor(SaveSlot slot)
+        public SaveFileEditor(SaveFile saveFile, int activeSlot = 0)
         {
-            this.slot = slot;
+            sv = saveFile;
+            this.activeSlot = activeSlot;
         }
 
-        public void ChangeBalance(int newVal)
+        public void ChangeSlot(int newSlot)
         {
-            Balance = newVal;
+            activeSlot = newSlot;
         }
 
         public List<TreeComponentName> EnabledTreeComponents()

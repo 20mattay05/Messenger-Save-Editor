@@ -147,6 +147,18 @@
         /VJGoUmop6lPAHq9f/ANtLxtXBB2wWEAAAAASUVORK5CYII=
 </value>
   </data>
+  <data name="timeshardPicture.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAACwAAABACAYAAABhspUgAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
+        EgAACxIB0t1+/AAAAXVJREFUaEPt1sFNA0EQRFGHQFCEQSCEQ1gE4CA4IMEVv0upNTMtY/eX6rTTVf+4
+        l8thvj7ff/7G73fHCJ/m7oUVTPG+HYVSvG9HoRTv21Eoxft2FBK/e9+OQuJ379tRSPzufTsKid+9P44C
+        Cd/bdxwFEr637zgKJHxv33EUSPjevu04WMV7+7fjYBXv7d+Og1W8t387Dlbx3v5lHEik998frzfxvftl
+        LEyk9yMsFibS++3CFiR8b2SELUj43sjzCXuQ8L2R69vLTRQ29uk7wjLCPlhFwZQkbEZYoZTnE04FCYVS
+        3DPuj7BCKe4Z9x9f2IhCKe4Z90ZYoRT3jHuPJ2x8LwoZ+4z9/vuMsILGPmO/vv9PWDyw0MhxQbHAASMj
+        nLDAASPtwmKhg6ux3/0yFjq4GvvdL2Ohg6ux3/0yFjq4GvvdX8YBBVK8t387DiqU4r3923FQoRTv7d+O
+        gwqleG//cRRI8b4dhVK8b0ehFO/bUSjF+yq/KxKCjLxwCk0AAAAASUVORK5CYII=
+</value>
+  </data>
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>204</value>
   </metadata>
