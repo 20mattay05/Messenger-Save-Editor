@@ -39,15 +39,18 @@
             slot1ToolStripMenuItem = new ToolStripMenuItem();
             slot2ToolStripMenuItem = new ToolStripMenuItem();
             slot3ToolStripMenuItem = new ToolStripMenuItem();
+            toolStripDropDownButton3 = new ToolStripDropDownButton();
+            findDifferenceToolStripMenuItem = new ToolStripMenuItem();
             PleaseOpenLabel = new Label();
             CopyPath = new Button();
             ErrorLabel = new Label();
             NoSavePanel = new Panel();
             SavePanel = new Panel();
-            TreePanel = new Panel();
-            moneyTextBox = new TextBox();
             moneyPanel = new Panel();
             timeshardPicture = new PictureBox();
+            moneyTextBox = new TextBox();
+            TreePanel = new Panel();
+            diffDebugDialog = new OpenFileDialog();
             toolStrip1.SuspendLayout();
             NoSavePanel.SuspendLayout();
             SavePanel.SuspendLayout();
@@ -65,7 +68,7 @@
             // toolStrip1
             // 
             toolStrip1.ImageScalingSize = new Size(20, 20);
-            toolStrip1.Items.AddRange(new ToolStripItem[] { toolStripDropDownButton1, toolStripDropDownButton2 });
+            toolStrip1.Items.AddRange(new ToolStripItem[] { toolStripDropDownButton1, toolStripDropDownButton2, toolStripDropDownButton3 });
             toolStrip1.Location = new Point(0, 0);
             toolStrip1.Name = "toolStrip1";
             toolStrip1.Size = new Size(1262, 27);
@@ -136,6 +139,23 @@
             slot3ToolStripMenuItem.Size = new Size(130, 26);
             slot3ToolStripMenuItem.Text = "Slot 3";
             // 
+            // toolStripDropDownButton3
+            // 
+            toolStripDropDownButton3.DisplayStyle = ToolStripItemDisplayStyle.Text;
+            toolStripDropDownButton3.DropDownItems.AddRange(new ToolStripItem[] { findDifferenceToolStripMenuItem });
+            toolStripDropDownButton3.Image = (Image)resources.GetObject("toolStripDropDownButton3.Image");
+            toolStripDropDownButton3.ImageTransparentColor = Color.Magenta;
+            toolStripDropDownButton3.Name = "toolStripDropDownButton3";
+            toolStripDropDownButton3.Size = new Size(68, 24);
+            toolStripDropDownButton3.Text = "Debug";
+            // 
+            // findDifferenceToolStripMenuItem
+            // 
+            findDifferenceToolStripMenuItem.Name = "findDifferenceToolStripMenuItem";
+            findDifferenceToolStripMenuItem.Size = new Size(224, 26);
+            findDifferenceToolStripMenuItem.Text = "Find Difference";
+            findDifferenceToolStripMenuItem.Click += findDifferenceToolStripMenuItem_Click;
+            // 
             // PleaseOpenLabel
             // 
             PleaseOpenLabel.BackColor = Color.Transparent;
@@ -201,28 +221,6 @@
             SavePanel.TabIndex = 5;
             SavePanel.Visible = false;
             // 
-            // TreePanel
-            // 
-            TreePanel.Location = new Point(739, 43);
-            TreePanel.Name = "TreePanel";
-            TreePanel.Size = new Size(445, 400);
-            TreePanel.TabIndex = 0;
-            // 
-            // moneyTextBox
-            // 
-            moneyTextBox.BackColor = SystemColors.MenuText;
-            moneyTextBox.BorderStyle = BorderStyle.None;
-            moneyTextBox.Font = new Font("Courier New", 25.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            moneyTextBox.ForeColor = SystemColors.ControlLightLight;
-            moneyTextBox.Location = new Point(93, 19);
-            moneyTextBox.MaxLength = 6;
-            moneyTextBox.Name = "moneyTextBox";
-            moneyTextBox.Size = new Size(234, 48);
-            moneyTextBox.TabIndex = 1;
-            moneyTextBox.Text = "0";
-            moneyTextBox.WordWrap = false;
-            moneyTextBox.TextChanged += moneyTextBox_TextChanged;
-            // 
             // moneyPanel
             // 
             moneyPanel.Controls.Add(timeshardPicture);
@@ -244,6 +242,35 @@
             timeshardPicture.SizeMode = PictureBoxSizeMode.Zoom;
             timeshardPicture.TabIndex = 3;
             timeshardPicture.TabStop = false;
+            // 
+            // moneyTextBox
+            // 
+            moneyTextBox.BackColor = SystemColors.MenuText;
+            moneyTextBox.BorderStyle = BorderStyle.None;
+            moneyTextBox.Font = new Font("Courier New", 25.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            moneyTextBox.ForeColor = SystemColors.ControlLightLight;
+            moneyTextBox.Location = new Point(93, 19);
+            moneyTextBox.MaxLength = 6;
+            moneyTextBox.Name = "moneyTextBox";
+            moneyTextBox.Size = new Size(234, 48);
+            moneyTextBox.TabIndex = 1;
+            moneyTextBox.Text = "0";
+            moneyTextBox.WordWrap = false;
+            moneyTextBox.TextChanged += moneyTextBox_TextChanged;
+            // 
+            // TreePanel
+            // 
+            TreePanel.Location = new Point(739, 43);
+            TreePanel.Name = "TreePanel";
+            TreePanel.Size = new Size(445, 400);
+            TreePanel.TabIndex = 0;
+            // 
+            // diffDebugDialog
+            // 
+            diffDebugDialog.FileName = "SaveGame.txt";
+            diffDebugDialog.Filter = "Save File|*.txt";
+            diffDebugDialog.InitialDirectory = "%userprofile%/AppData/LocalLow/Sabotage Studios/The Messenger";
+            diffDebugDialog.Multiselect = true;
             // 
             // EditorWindow
             // 
@@ -291,5 +318,8 @@
         private Panel moneyPanel;
         private PictureBox timeshardPicture;
         private TextBox moneyTextBox;
+        private ToolStripDropDownButton toolStripDropDownButton3;
+        private ToolStripMenuItem findDifferenceToolStripMenuItem;
+        private OpenFileDialog diffDebugDialog;
     }
 }

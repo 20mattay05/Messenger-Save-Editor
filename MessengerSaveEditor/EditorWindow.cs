@@ -135,12 +135,23 @@ namespace MessengerSaveEditor
             {
                 moneyTextBox.Text = moneyTextBox.Text.Remove(moneyTextBox.Text.Length - 1);
             }
-            
+
             // If somehow a non-integer is entered, show an error
             if (int.TryParse(moneyTextBox.Text, out int text)) slotEditor.SlotBalance = text;
             else ShowError("Unexpected non-integer in timeshard textbox");
         }
+        private void findDifferenceToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (diffDebugDialog.ShowDialog() == DialogResult.OK)
+            {
+                string[] files = diffDebugDialog.FileNames;
+                if (files.Length != 2) { ShowError("Debug diff expected 2 files"); return; }
+                string[] lines1 = File.ReadAllLines(files[0], System.Text.Encoding.UTF8);
+                string[] lines2 = File.ReadAllLines(files[1], System.Text.Encoding.UTF8);
 
+                saveFileHandler.DebugDifference(lines1, lines2);
+            }
+        }
         private void openSaveFileDialog_FileOk(object sender, System.ComponentModel.CancelEventArgs e)
         {
 
@@ -152,11 +163,6 @@ namespace MessengerSaveEditor
         }
 
         private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void pictureBox1_Click(object sender, EventArgs e)
         {
 
         }
@@ -175,7 +181,6 @@ namespace MessengerSaveEditor
         {
 
         }
-
 
     }
 

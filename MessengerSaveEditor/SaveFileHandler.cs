@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Text.Json;
@@ -93,6 +94,28 @@ namespace MessengerSaveEditor
                 jslot["shopUpgradesUnlocked"].ReplaceWith(slot.ShopUpgradesUnlocked);
             }
             return [node.ToJsonString()];
+        }
+
+        public void DebugDifference(string[] jsv1, string[] jsv2)
+        {
+            Debug.WriteLine("Parsing to find differences...");
+            SaveFile sv1 = ParseSaveFile(DecryptSaveFile(jsv1));
+            SaveFile sv2 = ParseSaveFile(DecryptSaveFile(jsv2));
+            Debug.WriteLine("Finding differences...");
+            for (int i = 0; i < sv1.SaveSlots.Length; i++)
+            {
+                SaveSlot sv1Slot = sv1.SaveSlots[i];
+                SaveSlot sv2Slot = sv2.SaveSlots[i];
+                (SaveSlot larger, SaveSlot smaller) = sv1Slot.Items.Keys.Count > sv2Slot.Items.Keys.Count ? (sv1Slot, sv2Slot) : (sv2Slot, sv1Slot);
+                List<int> itemsDiff = larger.Items.Keys.Except(smaller.Items.Keys).ToList();
+                if (itemsDiff.Count > 0) Debug.WriteLine($"Slot {i+1} has item difference(s): {string.Join(',', itemsDiff)}");
+
+                (larger, smaller) = sv1Slot.ShopUpgradesUnlocked.Count > sv2Slot.ShopUpgradesUnlocked.Count ? (sv1Slot, sv2Slot) : (sv2Slot, sv1Slot);
+                List<int> shopDiff = larger.ShopUpgradesUnlocked.Except(smaller.ShopUpgradesUnlocked).ToList();
+                if (shopDiff.Count > 0) Console.WriteLine($"Slot {i+1} has shop difference(s): {string.Join(',', shopDiff)}");
+
+            }
+            Debug.WriteLine("Done!");
         }
     }
 }
