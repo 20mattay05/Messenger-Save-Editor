@@ -8,69 +8,6 @@ using System.Threading.Tasks;
 
 namespace MessengerSaveEditor
 {    
-    // TODO: Sort this
-    public enum TreeComponentName // Specifically sorted so that (int)name is the same number as in the games code
-    {
-        KarutaPlates,
-        SerendipitousBodies,
-        PathOfResilience,
-        KusariJacket,
-        EnergyShuriken,
-        SerendipitousMinds,
-        PreparedMind,
-        StrikeOfTheNinja,
-        SecondWind,
-        CurrentsMaster,
-        Meditation,
-        RejuvenativeSpirit,
-        CenteredMind,
-        AerobaticsWarrior,
-        DemonsBane,
-        DevilsDue,
-        TimeSense,
-        PowerSense,
-        FocusedPowerSense
-    }
-
-    public enum ItemComponentName
-    {
-
-    }
-
-    public class SaveFile
-    {
-        public SaveSlot[] SaveSlots { get; set; } = [];
-
-        public void UpdateItemsFormat()
-        {
-            foreach (SaveSlot s in SaveSlots)
-            {
-                List<KeyValuePair<int,int>> l = s.itemsDict.ToList();
-                Items newItems = new Items 
-                { 
-                    Keys = l.Select(kvp => kvp.Key).ToList(), 
-                    Values = l.Select(kvp => kvp.Value).ToList() 
-                };
-                s.Items = newItems;
-            }
-        }
-    }
-    public class SaveSlot
-    {
-        public List<int> ShopUpgradesUnlocked { get; set; } = new();
-
-        // Only used during json conversion. Instantly converted to the internal itemsDict dictionary for easier use
-        public Items Items { get; set; } 
-
-        [JsonIgnore]
-        public Dictionary<int, int> itemsDict = new();
-    }
-    public struct Items
-    {
-        public List<int> Keys { get; set; }
-        public List<int> Values { get; set; }
-    }
-
     internal class SaveFileEditor
     {
         SaveFile sv;

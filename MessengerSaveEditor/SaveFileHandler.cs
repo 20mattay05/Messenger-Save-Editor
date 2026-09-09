@@ -99,8 +99,10 @@ namespace MessengerSaveEditor
         public void DebugDifference(string[] jsv1, string[] jsv2)
         {
             Debug.WriteLine("Parsing to find differences...");
-            SaveFile sv1 = ParseSaveFile(DecryptSaveFile(jsv1));
-            SaveFile sv2 = ParseSaveFile(DecryptSaveFile(jsv2));
+            string[] d1 = DecryptSaveFile(jsv1);
+            string[] d2 = DecryptSaveFile(jsv2);
+            SaveFile sv1 = ParseSaveFile(d1);
+            SaveFile sv2 = ParseSaveFile(d2);
             Debug.WriteLine("Finding differences...");
             for (int i = 0; i < sv1.SaveSlots.Length; i++)
             {
@@ -112,7 +114,7 @@ namespace MessengerSaveEditor
 
                 (larger, smaller) = sv1Slot.ShopUpgradesUnlocked.Count > sv2Slot.ShopUpgradesUnlocked.Count ? (sv1Slot, sv2Slot) : (sv2Slot, sv1Slot);
                 List<int> shopDiff = larger.ShopUpgradesUnlocked.Except(smaller.ShopUpgradesUnlocked).ToList();
-                if (shopDiff.Count > 0) Console.WriteLine($"Slot {i+1} has shop difference(s): {string.Join(',', shopDiff)}");
+                if (shopDiff.Count > 0) Debug.WriteLine($"Slot {i+1} has shop difference(s): {string.Join(',', shopDiff)}");
 
             }
             Debug.WriteLine("Done!");
