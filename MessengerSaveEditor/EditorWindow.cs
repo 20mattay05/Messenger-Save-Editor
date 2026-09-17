@@ -141,11 +141,18 @@ namespace MessengerSaveEditor
             // Only numbers must be entered
             if (System.Text.RegularExpressions.Regex.IsMatch(moneyTextBox.Text, "[^0-9]"))
             {
-                moneyTextBox.Text = moneyTextBox.Text.Remove(moneyTextBox.Text.Length - 1);
+                int curSelect = moneyTextBox.SelectionStart;
+                moneyTextBox.Text = string.Join("", moneyTextBox.Text.Where(char.IsNumber));
+                moneyTextBox.Select(curSelect-1, 0);
             }
 
             // If somehow a non-integer is entered, show an error
             if (int.TryParse(moneyTextBox.Text, out int text)) slotEditor.SlotBalance = text;
+            else if (string.IsNullOrEmpty(moneyTextBox.Text))
+            {
+                moneyTextBox.Text = "0";
+                moneyTextBox.Select(1, 0);
+            }
             else ShowError("Unexpected non-integer in timeshard textbox");
         }
         private void findDifferenceToolStripMenuItem_Click(object sender, EventArgs e)

@@ -230,7 +230,7 @@
             // 
             moneyPanel.Controls.Add(timeshardPicture);
             moneyPanel.Controls.Add(moneyTextBox);
-            moneyPanel.Location = new Point(840, 464);
+            moneyPanel.Location = new Point(840, 458);
             moneyPanel.Name = "moneyPanel";
             moneyPanel.Size = new Size(344, 79);
             moneyPanel.TabIndex = 2;
