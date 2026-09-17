@@ -17,20 +17,17 @@ namespace MessengerSaveEditor
         SerendipitousMinds,
         PreparedMind,
         Meditation,
-
-
-        // Unsorted below
-        StrikeOfTheNinja = 11,
-        SecondWind = 12,
-        CurrentsMaster = 13,
-        AerobaticsWarrior = 14,
-        TimeSense = 16,
         RejuvenativeSpirit,
         CenteredMind,
         DemonsBane,
+        StrikeOfTheNinja,
+        SecondWind,
+        CurrentsMaster,
+        AerobaticsWarrior,
         DevilsDue,
+        TimeSense,
+        FocusedPowerSense,
         PowerSense,
-        FocusedPowerSense
     }
 
     public enum ItemComponentName
@@ -59,6 +56,7 @@ namespace MessengerSaveEditor
         ShurikenUpgrade = 38,
         CurrentsMaster = 39,
         AerobaticsWarrior = 41,
+        RejuvenativeSpirit = 42,
         SerendipitousMinds = 61,
         SerendipitousBodies = 62,
         DemonsBane = 63,
