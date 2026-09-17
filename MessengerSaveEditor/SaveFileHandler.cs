@@ -83,8 +83,8 @@ namespace MessengerSaveEditor
             sv.UpdateItemsFormat();
 
             JsonNode node = JsonNode.Parse(onlyLine)!;
-            JsonArray slots = node.AsArray();
-
+            JsonArray slots = node[0].AsArray();
+            
             for (int i = 0; i < slots.Count; i++)
             {
                 JsonNode jslot = slots[i]!;

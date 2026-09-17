@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <metadata name="openSaveFileDialog.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>484, 39</value>
+    <value>631, 34</value>
   </metadata>
   <metadata name="toolStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>190, 17</value>
@@ -161,7 +161,7 @@
   <data name="timeshardPicture.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACwAAABACAYAAABhspUgAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
-        DwAACw8BkvkDpQAAAXVJREFUaEPt1sFNA0EQRFGHQFCEQSCEQ1gE4CA4IMEVv0upNTMtY/eX6rTTVf+4
+        DAAACwwBP0AiyAAAAXVJREFUaEPt1sFNA0EQRFGHQFCEQSCEQ1gE4CA4IMEVv0upNTMtY/eX6rTTVf+4
         l8thvj7ff/7G73fHCJ/m7oUVTPG+HYVSvG9HoRTv21Eoxft2FBK/e9+OQuJ379tRSPzufTsKid+9P44C
         Cd/bdxwFEr637zgKJHxv33EUSPjevu04WMV7+7fjYBXv7d+Og1W8t387Dlbx3v5lHEik998frzfxvftl
         LEyk9yMsFibS++3CFiR8b2SELUj43sjzCXuQ8L2R69vLTRQ29uk7wjLCPlhFwZQkbEZYoZTnE04FCYVS
@@ -171,7 +171,10 @@
 </value>
   </data>
   <metadata name="diffDebugDialog.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>657, 39</value>
+    <value>366, 36</value>
+  </metadata>
+  <metadata name="saveFileDialog1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>810, 39</value>
   </metadata>
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>204</value>

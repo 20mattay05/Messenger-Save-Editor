@@ -12,9 +12,10 @@ namespace MessengerSaveEditor
     {
         SaveFileHandler saveFileHandler = new();
 
-        SaveFile viewedSaveFile;
+        SaveFile saveFile;
         int activeSlot = 0;
-        SaveSlot curSlot => viewedSaveFile.SaveSlots[activeSlot];
+
+        SaveSlot CurSlot => saveFile.SaveSlots[activeSlot];
 
 
         SaveFileEditor slotEditor;
@@ -24,7 +25,7 @@ namespace MessengerSaveEditor
             InitializeComponent();
             DragEnter += new DragEventHandler(Form1_DragEnter);
             DragDrop += new DragEventHandler(Form1_DragDrop);
-            errorLabelTimer.Tick += (sender, e) => ErrorLabel.Visible = false;
+            notificationLabelTimer.Tick += (sender, e) => NotificationLabel.Visible = false;
             MaximizeBox = false;
             slot1ToolStripMenuItem.Click += CheckSlot;
             slot2ToolStripMenuItem.Click += CheckSlot;
@@ -50,6 +51,7 @@ namespace MessengerSaveEditor
         {
             const string path = @"%userprofile%\AppData\LocalLow\Sabotage Studio\The Messenger";
             Clipboard.SetText(path);
+            ShowNotification("Pasted path", Color.White);
         }
 
         private void openToolStripMenuItem_Click(object sender, EventArgs e)
@@ -77,7 +79,7 @@ namespace MessengerSaveEditor
 
         private void ViewSaveFile(SaveFile sv)
         {
-            viewedSaveFile = sv;
+            saveFile = sv;
             NoSavePanel.Visible = false;
             SavePanel.Visible = true;
             saveToolStripMenuItem.Enabled = true;
@@ -116,17 +118,23 @@ namespace MessengerSaveEditor
         }
 
 
-        System.Windows.Forms.Timer errorLabelTimer = new();
+        System.Windows.Forms.Timer notificationLabelTimer = new();
+        private void ShowNotification(string message, Color textColor, int secondsShown = 3)
+        {
+            NotificationLabel.Text = message;
+            NotificationLabel.Visible = true;
+            NotificationLabel.ForeColor = textColor;
+
+            int millisecondsVisible = secondsShown * 1000;
+            notificationLabelTimer.Interval = millisecondsVisible;
+            notificationLabelTimer.Start();
+        }
         private void ShowError(string errorMessage)
         {
             errorMessage = "Error: " + errorMessage;
-            ErrorLabel.Text = errorMessage;
-            ErrorLabel.Visible = true;
-
-            const int millisecondsVisible = 10 * 1000;
-            errorLabelTimer.Interval = millisecondsVisible;
-            errorLabelTimer.Start();
+            ShowNotification(errorMessage, Color.Red, 10);
         }
+
 
         private void moneyTextBox_TextChanged(object sender, EventArgs e)
         {
@@ -152,6 +160,25 @@ namespace MessengerSaveEditor
                 saveFileHandler.DebugDifference(lines1, lines2);
             }
         }
+        private void saveFileDialog1_FileOk(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+
+        }
+        private void saveAsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                string save = saveFileHandler.MakeSaveFile(saveFile)[0];
+
+                string path = saveFileDialog1.FileName;
+
+                StreamWriter file = File.CreateText(path);
+                file.WriteLine(save);
+                file.Close();
+                ShowNotification("Succesfully saved!", Color.Green);
+            }
+        }
+
         private void openSaveFileDialog_FileOk(object sender, System.ComponentModel.CancelEventArgs e)
         {
 

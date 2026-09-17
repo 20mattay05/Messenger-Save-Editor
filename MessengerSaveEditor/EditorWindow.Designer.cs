@@ -43,7 +43,7 @@
             findDifferenceToolStripMenuItem = new ToolStripMenuItem();
             PleaseOpenLabel = new Label();
             CopyPath = new Button();
-            ErrorLabel = new Label();
+            NotificationLabel = new Label();
             NoSavePanel = new Panel();
             SavePanel = new Panel();
             moneyPanel = new Panel();
@@ -51,6 +51,7 @@
             moneyTextBox = new TextBox();
             TreePanel = new Panel();
             diffDebugDialog = new OpenFileDialog();
+            saveFileDialog1 = new SaveFileDialog();
             toolStrip1.SuspendLayout();
             NoSavePanel.SuspendLayout();
             SavePanel.SuspendLayout();
@@ -61,7 +62,7 @@
             // openSaveFileDialog
             // 
             openSaveFileDialog.FileName = "SaveGame.txt";
-            openSaveFileDialog.Filter = "Save File|*.txt";
+            openSaveFileDialog.Filter = "Save files|*.txt|All files|*.*";
             openSaveFileDialog.InitialDirectory = "%userprofile%/AppData/LocalLow/Sabotage Studios/The Messenger";
             openSaveFileDialog.FileOk += openSaveFileDialog_FileOk;
             // 
@@ -89,7 +90,8 @@
             // openToolStripMenuItem
             // 
             openToolStripMenuItem.Name = "openToolStripMenuItem";
-            openToolStripMenuItem.Size = new Size(143, 26);
+            openToolStripMenuItem.ShortcutKeys = Keys.Control | Keys.O;
+            openToolStripMenuItem.Size = new Size(181, 26);
             openToolStripMenuItem.Text = "Open";
             openToolStripMenuItem.Click += openToolStripMenuItem_Click;
             // 
@@ -97,7 +99,8 @@
             // 
             saveToolStripMenuItem.Enabled = false;
             saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            saveToolStripMenuItem.Size = new Size(143, 26);
+            saveToolStripMenuItem.ShortcutKeys = Keys.Control | Keys.S;
+            saveToolStripMenuItem.Size = new Size(181, 26);
             saveToolStripMenuItem.Text = "Save";
             saveToolStripMenuItem.Click += saveToolStripMenuItem_Click;
             // 
@@ -105,8 +108,10 @@
             // 
             saveAsToolStripMenuItem.Enabled = false;
             saveAsToolStripMenuItem.Name = "saveAsToolStripMenuItem";
-            saveAsToolStripMenuItem.Size = new Size(143, 26);
+            saveAsToolStripMenuItem.ShortcutKeys = Keys.F12;
+            saveAsToolStripMenuItem.Size = new Size(181, 26);
             saveAsToolStripMenuItem.Text = "Save As";
+            saveAsToolStripMenuItem.Click += saveAsToolStripMenuItem_Click;
             // 
             // toolStripDropDownButton2
             // 
@@ -152,7 +157,7 @@
             // findDifferenceToolStripMenuItem
             // 
             findDifferenceToolStripMenuItem.Name = "findDifferenceToolStripMenuItem";
-            findDifferenceToolStripMenuItem.Size = new Size(224, 26);
+            findDifferenceToolStripMenuItem.Size = new Size(193, 26);
             findDifferenceToolStripMenuItem.Text = "Find Difference";
             findDifferenceToolStripMenuItem.Click += findDifferenceToolStripMenuItem_Click;
             // 
@@ -183,25 +188,24 @@
             CopyPath.UseVisualStyleBackColor = true;
             CopyPath.Click += CopyPath_Click;
             // 
-            // ErrorLabel
+            // NotificationLabel
             // 
-            ErrorLabel.BackColor = Color.Transparent;
-            ErrorLabel.Font = new Font("Segoe UI", 14F);
-            ErrorLabel.ForeColor = Color.Crimson;
-            ErrorLabel.Location = new Point(0, 521);
-            ErrorLabel.Name = "ErrorLabel";
-            ErrorLabel.Size = new Size(1262, 45);
-            ErrorLabel.TabIndex = 4;
-            ErrorLabel.Text = "Error: (no error yet)";
-            ErrorLabel.TextAlign = ContentAlignment.MiddleCenter;
-            ErrorLabel.Visible = false;
-            ErrorLabel.Click += ErrorLabel_Click;
+            NotificationLabel.BackColor = Color.Transparent;
+            NotificationLabel.Font = new Font("Segoe UI", 14F);
+            NotificationLabel.ForeColor = Color.Crimson;
+            NotificationLabel.Location = new Point(0, 557);
+            NotificationLabel.Name = "NotificationLabel";
+            NotificationLabel.Size = new Size(1224, 45);
+            NotificationLabel.TabIndex = 4;
+            NotificationLabel.Text = "Error: (no error yet)";
+            NotificationLabel.TextAlign = ContentAlignment.MiddleCenter;
+            NotificationLabel.Visible = false;
+            NotificationLabel.Click += ErrorLabel_Click;
             // 
             // NoSavePanel
             // 
             NoSavePanel.BackColor = Color.Transparent;
             NoSavePanel.Controls.Add(CopyPath);
-            NoSavePanel.Controls.Add(ErrorLabel);
             NoSavePanel.Controls.Add(PleaseOpenLabel);
             NoSavePanel.Location = new Point(19, 37);
             NoSavePanel.Margin = new Padding(10);
@@ -212,6 +216,7 @@
             // SavePanel
             // 
             SavePanel.BackColor = Color.Transparent;
+            SavePanel.Controls.Add(NotificationLabel);
             SavePanel.Controls.Add(moneyPanel);
             SavePanel.Controls.Add(TreePanel);
             SavePanel.Location = new Point(19, 37);
@@ -225,7 +230,7 @@
             // 
             moneyPanel.Controls.Add(timeshardPicture);
             moneyPanel.Controls.Add(moneyTextBox);
-            moneyPanel.Location = new Point(840, 499);
+            moneyPanel.Location = new Point(840, 464);
             moneyPanel.Name = "moneyPanel";
             moneyPanel.Size = new Size(344, 79);
             moneyPanel.TabIndex = 2;
@@ -272,6 +277,13 @@
             diffDebugDialog.InitialDirectory = "%userprofile%/AppData/LocalLow/Sabotage Studios/The Messenger";
             diffDebugDialog.Multiselect = true;
             // 
+            // saveFileDialog1
+            // 
+            saveFileDialog1.FileName = "NewSaveGame.txt";
+            saveFileDialog1.Filter = "Save files|*.txt|All files|*,*";
+            saveFileDialog1.InitialDirectory = "%userprofile%/AppData/LocalLow/Sabotage Studios/The Messenger";
+            saveFileDialog1.FileOk += saveFileDialog1_FileOk;
+            // 
             // EditorWindow
             // 
             AllowDrop = true;
@@ -307,7 +319,7 @@
         private ToolStripMenuItem saveAsToolStripMenuItem;
         private Label PleaseOpenLabel;
         private Button CopyPath;
-        private Label ErrorLabel;
+        private Label NotificationLabel;
         private ToolStripDropDownButton toolStripDropDownButton2;
         private ToolStripMenuItem slot1ToolStripMenuItem;
         private ToolStripMenuItem slot2ToolStripMenuItem;
@@ -321,5 +333,6 @@
         private ToolStripDropDownButton toolStripDropDownButton3;
         private ToolStripMenuItem findDifferenceToolStripMenuItem;
         private OpenFileDialog diffDebugDialog;
+        private SaveFileDialog saveFileDialog1;
     }
 }
